@@ -1,71 +1,30 @@
 import React,{useState}from 'react';
 import './App.css'
-import viteLogo from '/vite.svg'
 import chkout from './assets/chkout.jpg'
+import ckt1 from './assets/ckt1.webp'
+import ckt2 from './assets/ckt2.jpg'
 import heroimage from './assets/heroimage.webp'
 import man1 from './assets/man1.jpg'
 import man2 from './assets/man2.jpeg'
 import woman1 from './assets/woman1.jpg'
-import { AiOutlineMenu } from "react-icons/ai";
 import { LiaFlagUsaSolid } from "react-icons/lia";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
-
+import { PiCubeThin } from "react-icons/pi";
+import { TbTruckDelivery } from "react-icons/tb";
+import { FaChevronLeft, FaChevronRight, FaHeart, FaSearchPlus } from "react-icons/fa";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 const Navbar = () => {
-
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <>
-    {/* First Navbar */}
-    <header className="text-gray-600 body-font absolute top-0 left-0 w-full z-20">
-      <div className="flex flex-wrap px-12 py-4 flex-col md:flex-row items-center">
-        {/* Logo and Brand Name */}
-        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-10 w-10 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-            />
-          </svg>
-          <h1 className="title-font sm:text-2xl text-xl ml-4 font-medium text-white">
-            Aliexpress.com
-          </h1>
-        </a>
-
-        {/* Navigation Links with Icons */}
-        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center text-white">
-          <a className="mr-5 hover:text-gray-300 active:text-gray-500 flex flex-col text-xs"><h6>Delivery to:</h6><h5 className="flex flex-wrap justify-center items-center gap-1"><LiaFlagUsaSolid />US</h5></a>
-
-          {/* English-USD with Globe Icon */}
-          <a className="mr-5 hover:text-gray-300 active:text-gray-500 flex items-center">
+      {/* First Navbar */}
+      <header className="text-gray-600 body-font absolute top-0 left-0 w-full z-20 bg-black">
+        <div className="flex flex-wrap px-6 md:px-12 py-4 items-center justify-between">
+          {/* Logo and Brand Name */}
+          <a className="flex title-font font-medium items-center text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            English-USD
-          </a>
-
-          {/* Checkout with Shopping Cart Icon */}
-          <a className="mr-5 hover:text-gray-300 active:text-gray-500 flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
+              className="h-8 w-8 md:h-10 md:w-10"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -77,55 +36,86 @@ const Navbar = () => {
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
+            <h1 className="sm:text-2xl text-lg ml-2 md:ml-4 font-medium text-white">
+              Aliexpress.com
+            </h1>
           </a>
 
-          {/* Sign In with User Icon */}
-          <a className="mr-5 hover:text-gray-300 active:text-gray-500 flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-              />
-            </svg>
-            Sign In
-          </a>
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex md:ml-auto items-center text-white text-sm md:text-base">
+            <a className="mr-4 md:mr-6 hover:text-gray-300 flex flex-col text-xs">
+              <h6>Delivery to:</h6>
+              <h5 className="flex items-center gap-1">
+                <LiaFlagUsaSolid />
+                US
+              </h5>
+            </a>
 
-        {/* Sign Up Button */}
-        <button className="inline-flex items-center bg-orange-500 border-0 py-2 px-5 focus:outline-none hover:bg-gray-600 rounded-full text-sm mt-4 md:mt-0 text-white">
-          Sign Up
-        </button>
+            <a className="mr-4 md:mr-6 hover:text-gray-300 flex items-center">
+              🌍 English-USD
+            </a>
+
+            <a className="mr-4 md:mr-6 hover:text-gray-300 flex items-center">
+              🛒
+            </a>
+
+            <a className="mr-4 md:mr-6 hover:text-gray-300 flex items-center">
+              👤 Sign In
+            </a>
+          </nav>
+
+          {/* Sign Up Button */}
+          <button className="hidden md:inline-flex items-center bg-orange-500 border-0 py-2 px-4 md:px-5 rounded-full text-sm text-white hover:bg-gray-600">
+            Sign Up
+          </button>
+
+          {/* Mobile Burger Menu */}
+          <button
+            className="md:hidden text-white text-2xl"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {menuOpen && (
+          <div className="md:hidden absolute top-16 left-0 w-full bg-black text-white shadow-md">
+            <nav className="flex flex-col items-center text-sm p-4">
+              <a className="py-2 hover:text-gray-300">Delivery to: US</a>
+              <a className="py-2 hover:text-gray-300">🌍 English-USD</a>
+              <a className="py-2 hover:text-gray-300">🛒 Checkout</a>
+              <a className="py-2 hover:text-gray-300">👤 Sign In</a>
+              <button className="w-full bg-orange-500 py-2 mt-2 rounded-full hover:bg-gray-600">
+                Sign Up
+              </button>
+            </nav>
+          </div>
+        )}
+      </header>
+
+      {/* Second Navbar (Hidden on Small Screens) */}
+      <div className="hidden md:block absolute top-16 left-0 w-full z-20 backdrop-blur-sm bg-black/80">
+        <div className="flex flex-wrap px-6 md:px-12 py-2 items-center justify-between">
+          {/* Left Side Links */}
+          <nav className="flex items-center text-white text-sm md:text-base space-x-4 md:space-x-6">
+            <a className="hover:text-gray-300 flex items-center">
+              <AiOutlineMenu /> All Categories
+            </a>
+            <a className="hover:text-gray-300">Feature Selections</a>
+            <a className="hover:text-gray-300">Trade Assurance</a>
+          </nav>
+
+          {/* Right Side Links */}
+          <nav className="flex items-center text-white text-sm md:text-base space-x-4 md:space-x-6">
+            <a className="hover:text-gray-300">Buyer Central</a>
+            <a className="hover:text-gray-300">Help Center</a>
+            <a className="hover:text-gray-300">Get the App</a>
+            <a className="hover:text-gray-300">Become a Supplier</a>
+          </nav>
+        </div>
       </div>
-    </header>
-
-    {/* Second Navbar */}
-    <div className="absolute top-16 left-0 w-full z-20  backdrop-blur-sm">
-      <div className="flex flex-wrap px-12 py-2 flex-col md:flex-row items-center justify-between">
-        {/* Left Side Links */}
-        <nav className="flex flex-wrap items-center text-base justify-center text-white">
-          <a className="mr-7 hover:text-gray-300 active:text-gray-500 flex flex-wrap justify-center items-center gap-2"><AiOutlineMenu />  All Categories</a>
-          <a className="mr-7 hover:text-gray-300 active:text-gray-500">Feature Selections</a>
-          <a className="mr-7 hover:text-gray-300 active:text-gray-500">Trade Assurance</a>
-        </nav>
-
-        {/* Right Side Links */}
-        <nav className="flex flex-wrap items-center text-base justify-center text-white">
-          <a className="mr-5 hover:text-gray-300 active:text-gray-500 ">Buyer Central</a>
-          <a className="mr-5 hover:text-gray-300 active:text-gray-500">Help Center</a>
-          <a className="mr-5 hover:text-gray-300 active:text-gray-500">Get the App</a>
-          <a className="mr-5 hover:text-gray-300 active:text-gray-500">Become a Supplier</a>
-        </nav>
-      </div>
-    </div>
-  </>
+    </>
   );
 };
 
@@ -157,7 +147,14 @@ function App() {
       image: man2,
     },
   ];
-
+  const images = [
+    chkout,
+    ckt1,
+    ckt2,
+    chkout,
+    ckt1,
+    ckt2,
+  ];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
@@ -168,6 +165,18 @@ function App() {
     setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const showPrevious = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+  };
+
+  const showNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+  };
+  const handleThumbnailClick = (index) => {
+    setCurrentIndex(index);
+  };
   return (
     <>
       {/* // Hero Section */}
@@ -332,80 +341,153 @@ function App() {
       </section>
 
       {/* // checkout section */}
-      <section class="text-gray-600 body-font overflow-hidden">
+      <section class="text-gray-600 body-font overflow-hidden bg-white ">
+      
         <div class="container px-5 py-24 mx-auto">
-          <div class="lg:w-4/5 mx-auto flex flex-wrap">
-            <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={chkout}/>
-            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-              <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
-              <div class="flex mb-4">
-                <span class="flex items-center">
-                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                  </svg>
-                  <span class="text-gray-600 ml-3">4 Reviews</span>
-                </span>
-                <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                  <a class="text-gray-500">
-                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                    </svg>
-                  </a>
-                  <a class="text-gray-500">
-                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                    </svg>
-                  </a>
-                  <a class="text-gray-500">
-                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                    </svg>
-                  </a>
-                </span>
+          <div class="lg:w-4/5 mx-auto flex flex-wrap border-0 border-black shadow-xl">
+            <div className="hidden md:hidden lg:flex flex-col space-y-3 absolute left-18">
+                {images.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    alt={`Thumbnail ${index + 1}`}
+                    className={`w-20 h-20 object-cover rounded-lg cursor-pointer border-2 
+                      ${index === currentIndex ? "border-orange-500" : "border-transparent"}`}
+                    onClick={() => handleThumbnailClick(index)}
+                  />
+                ))}
+        </div>
+          <div className="relative w-full lg:w-1/2 flex items-center justify-center ">
+              {/* Image */}
+              <img
+                alt="ecommerce"
+                className="w-full h-64 lg:h-auto lg:w-120 object-cover object-center rounded"
+                src={images[currentIndex]}
+              />
+
+              {/* Left and Right Backgrounds */}
+              <div className="absolute top-0 left-0 h-full w-18 bg-gray-200"></div>
+              <div className="absolute top-0 right-0 h-full w-18 bg-gray-200"></div>
+
+              {/* Left Arrow */}
+              <button
+                className="absolute top-1/2 left-3 transform -translate-y-1/2 bg-white text-base text-black p-4 rounded-full shadow-lg hover:bg-gray-300"
+                onClick={showPrevious}
+              >
+                <FaChevronLeft size={20} />
+              </button>
+
+              {/* Right Arrow */}
+              <button
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 bg-white text-base text-black p-4 rounded-full shadow-lg hover:bg-gray-300"
+                onClick={showNext}
+              >
+                <FaChevronRight size={20} />
+              </button>
+
+              {/* Icons on the top right (Heart & Zoom) */}
+              <div className="hidden md:hidden lg:flex absolute top-4 right-4 flex-col space-y-3">
+                <button className="bg-white p-3 rounded-full shadow-lg hover:bg-gray-300">
+                  <FaHeart className="text-red-500" size={20} />
+                </button>
+                <button className="bg-white p-3 rounded-full shadow-lg hover:bg-gray-300">
+                  <FaSearchPlus className="text-gray-700" size={20} />
+                </button>
               </div>
-              <p class="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
-              <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-                <div class="flex">
-                  <span class="mr-3">Color</span>
-                  <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-                  <button class="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                  <button class="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            </div>
+            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 lg:px-6 p-2 lg:mt-0">
+              {/* Free Shipping Banner */}
+              <div className="flex flex-col items-start">
+
+              <h2 className="flex flex-wrap items-start text-sm font-semibold title-font text-black bg-orange-200 tracking-widest px-2 py-1 mb-4">
+                {/* Truck Icon */}
+                <TbTruckDelivery className="inline-block text-orange-700 m-1 text-3xl" />
+                
+                {/* FREE shipping */}
+                <p>
+                  <span className="text-orange-700 font-bold">FREE shipping</span> capped at $20.00 on your first<br />order
+                </p>
+              </h2>
+
+              <h4 className="text-xs title-font text-white bg-orange-500 tracking-widest px-2 py-1 inline-block mb-4">
+                180-day lowest price
+              </h4>
+              </div>
+
+              {/* Price Breakdown */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div>
+                  <div className="mb-4">
+                    <div className="text-gray-600 text-sm">1 - 499 pieces</div>
+                    <div className="text-gray-900 font-bold text-2xl">$3.68</div>
+                  </div>
+                  <div className="mb-4">
+                    <div className="text-gray-600 text-sm">2000 - 4999 pieces</div>
+                    <div className="text-gray-900 font-bold text-2xl">$2.98</div>
+                  </div>
                 </div>
-                <div class="flex ml-6 items-center">
-                  <span class="mr-3">Size</span>
-                  <div class="relative">
-                    <select class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                      <option>SM</option>
-                      <option>M</option>
-                      <option>L</option>
-                      <option>XL</option>
-                    </select>
-                    <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
-                        <path d="M6 9l6 6 6-6"></path>
-                      </svg>
-                    </span>
+                <div>
+                  <div className="mb-4">
+                    <div className="text-gray-600 text-sm">500 - 1999 pieces</div>
+                    <div className="text-gray-900 font-bold text-2xl">$3.28</div>
+                  </div>
+                  <div className="mb-4">
+                    <div className="text-gray-600 text-sm">≥= 5000 pieces</div>
+                    <div className="text-gray-900 font-bold text-2xl">$2.48</div>
                   </div>
                 </div>
               </div>
-              <div class="flex">
-                <span class="title-font font-medium text-2xl text-gray-900">$58.00</span>
-                <button class="flex ml-auto text-white bg-orange-700 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
-                <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+
+
+              {/* Sample Price and Button */}
+              <div className="flex items-center justify-between p-3 rounded-lg bg-gray-100">
+                  <div className="flex items-center text-gray-600">
+                    <PiCubeThin className="text-xl mr-2" />
+                    <span className="text-black font-semibold">Sample price:</span>
+                    <span className="ml-1">$6.00</span>
+                  </div>
+                  <button className="text-black bg-white border px-4 py-1.5 text-sm font-medium rounded-full hover:bg-gray-200">
+                    Get sample
+                  </button>
+              </div>
+
+              <div className="border-t border-gray-200 my-4"></div>
+
+              <div className="mb-6 pt-2 border-separate">
+                <h3 className="text-gray-900 font-medium mb-2">Variations</h3>
+                <p className="text-gray-600 mb-4">Total options: <strong>2 color</strong>; <strong>1 Voltage (V)</strong>; <strong>4 pl...</strong></p>
+                <div className="flex items-center">
+                  <span className="text-gray-600 mr-4">Color:</span>
+                  <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none bg-yellow-400"></button>
+                  <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none bg-gray-700 ml-2"></button>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-gray-900 font-medium mb-2"><strong>Voltage</strong> V-1: 110V-220V </h3>
+                <p className="text-gray-600 mb-4 px-2 bg-gray-100 border-2 rounded-lg border-black w-fit">110V-220V</p>
+                <div className="flex items-center">
+                  <span className="text-gray-600 mr-4">Color:</span>
+                  <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none bg-yellow-400"></button>
+                  <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none bg-gray-700 ml-2"></button>
+                </div>
+              </div>
+
+              {/* Price and Buttons */}
+              <div className="flex items-center">
+                <span className="title-font font-bold text-2xl text-gray-900">$3.68</span>
+                <button className="flex ml-auto text-white bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-orange-600 rounded">
+                  Add to Cart
+                </button>
+                <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 hover:bg-gray-300">
+                  <svg
+                    fill="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                   </svg>
                 </button>
