@@ -6,23 +6,41 @@ import heroimage from './assets/heroimage.webp'
 import man1 from './assets/man1.jpg'
 import man2 from './assets/man2.jpeg'
 import woman1 from './assets/woman1.jpg'
+import { AiOutlineMenu } from "react-icons/ai";
+import { LiaFlagUsaSolid } from "react-icons/lia";
+import { IoMdArrowDroprightCircle } from "react-icons/io";
 
 const Navbar = () => {
 
   return (
-    <header className="text-gray-600 body-font">
-      <div className="flex flex-wrap px-12 flex-col md:flex-row items-center header-bg">
+    <>
+    {/* First Navbar */}
+    <header className="text-gray-600 body-font absolute top-0 left-0 w-full z-20">
+      <div className="flex flex-wrap px-12 py-4 flex-col md:flex-row items-center">
         {/* Logo and Brand Name */}
         <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-10 w-10 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+            />
+          </svg>
+          <h1 className="title-font sm:text-2xl text-xl ml-4 font-medium text-white">
             Aliexpress.com
           </h1>
         </a>
 
         {/* Navigation Links with Icons */}
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center text-white">
-          <a className="mr-5 hover:text-gray-300 active:text-gray-500">Delivery/US</a>
+          <a className="mr-5 hover:text-gray-300 active:text-gray-500 flex flex-col text-xs"><h6>Delivery to:</h6><h5 className="flex flex-wrap justify-center items-center gap-1"><LiaFlagUsaSolid />US</h5></a>
 
           {/* English-USD with Globe Icon */}
           <a className="mr-5 hover:text-gray-300 active:text-gray-500 flex items-center">
@@ -59,7 +77,6 @@ const Navbar = () => {
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
-            Checkout
           </a>
 
           {/* Sign In with User Icon */}
@@ -83,22 +100,32 @@ const Navbar = () => {
         </nav>
 
         {/* Sign Up Button */}
-        <button className="inline-flex items-center bg-orange-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-600 rounded text-base mt-4 md:mt-0 text-white">
+        <button className="inline-flex items-center bg-orange-500 border-0 py-2 px-5 focus:outline-none hover:bg-gray-600 rounded-full text-sm mt-4 md:mt-0 text-white">
           Sign Up
-          <svg
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            className="w-4 h-4 ml-1"
-            viewBox="0 0 24 24"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
         </button>
       </div>
     </header>
+
+    {/* Second Navbar */}
+    <div className="absolute top-16 left-0 w-full z-20  backdrop-blur-sm">
+      <div className="flex flex-wrap px-12 py-2 flex-col md:flex-row items-center justify-between">
+        {/* Left Side Links */}
+        <nav className="flex flex-wrap items-center text-base justify-center text-white">
+          <a className="mr-7 hover:text-gray-300 active:text-gray-500 flex flex-wrap justify-center items-center gap-2"><AiOutlineMenu />  All Categories</a>
+          <a className="mr-7 hover:text-gray-300 active:text-gray-500">Feature Selections</a>
+          <a className="mr-7 hover:text-gray-300 active:text-gray-500">Trade Assurance</a>
+        </nav>
+
+        {/* Right Side Links */}
+        <nav className="flex flex-wrap items-center text-base justify-center text-white">
+          <a className="mr-5 hover:text-gray-300 active:text-gray-500 ">Buyer Central</a>
+          <a className="mr-5 hover:text-gray-300 active:text-gray-500">Help Center</a>
+          <a className="mr-5 hover:text-gray-300 active:text-gray-500">Get the App</a>
+          <a className="mr-5 hover:text-gray-300 active:text-gray-500">Become a Supplier</a>
+        </nav>
+      </div>
+    </div>
+  </>
   );
 };
 
@@ -107,23 +134,26 @@ function App() {
   const testimonials = [
     {
       id: 1,
-      name: "Hannah Goldburg",
+      name: "Hannah bur",
+      name2:"Co Founder",
       description:
-        '"Pour-over craft beer pug drinking vinegar live-edge gastropub, keytar neutra sustainable fingerstache kickstarter. Echo park sriracha pinterest actually, palo santo tumeric. Tofu before they sold out adaptogen, gluten-free chia."',
+        '"Pour-over craft beer pug drinking vinegar live-edge gastropub, Echo park sriracha pinterest actually, palo santo tumeric. Tofu before they sold out adaptogen, gluten-free chia."',
       image: woman1,
     },
     {
       id: 2,
       name: "John Doe",
+      name2:"Co Founder",
       description:
-        '"Sustainable fashion axe meditation, hexagon gentrify pitchfork ethical. Art party tousled raclette, cloud bread disrupt. Echo park sriracha pinterest actually, palo santo tumeric. Tofu before they sold out adaptogen, gluten-free chia."',
+        '"Sustainable fashion axe meditation, hexagon pitchfork ethical.  cloud bread disrupt. Echo park pinterest actually, palo santo tumeric. Tofu before they sold out adaptogen, gluten-free chia."',
       image: man1,
     },
     {
       id: 3,
       name: "Jane Smith",
+      name2:"Co Founder",
       description:
-        '"Echo park sriracha pinterest actually, palo santo tumeric. Tofu before they sold out adaptogen, gluten-free chia. Echo park sriracha pinterest actually, palo santo tumeric. Tofu before they sold out adaptogen, gluten-free chia."',
+        '"Echo park sriracha pinterest actually, palo santo tumeric. gluten-free chia. Echo park sriracha pinterest actually, palo santo tumeric. Tofu before they sold out adaptogen, gluten-free chia."',
       image: man2,
     },
   ];
@@ -140,38 +170,28 @@ function App() {
 
   return (
     <>
-    {/* // Navbar*/}
-      <Navbar />
-      
       {/* // Hero Section */}
-      <section class="relative text-gray-600 body-font">
-        <div class="container mx-auto flex px-5 py-60 md:flex-row flex-col items-center">
-          <div className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage:`url(${heroimage})`
-            }}>
-            <div class="bg-black opacity-30 w-full h-full"></div> 
-          </div>
-          
-        
-          <div class="relative lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center text-white z-10">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium">
-              Before they sold out
-            </h1>
-            <p class="mb-8 leading-relaxed">
-              Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke <br/> beard tote bag. Heirloom echo park mlkshk tote bag selvage hot  <br/>chicken authentic tumeric truffaut hexagon try-hard chambray.
-            </p>
-            <div class="flex justify-center">
-              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                Button
-              </button>
-              <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
-                Button
-              </button>
-            </div>
-          </div>
+      <section className="relative body-font">
+      <Navbar />
+      <div className="container mx-auto flex px-5 py-70 md:flex-row flex-col items-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.3)), url(${heroimage})`,
+          }}
+        >
+          <div className="bg-black opacity-30 w-full h-full"></div>
         </div>
-      </section>
+        <div className="relative lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center text-white z-10">
+          <h3 className="title-font sm:text-xl text-xl mb-4 font-medium gap-2 flex items-center">
+          <IoMdArrowDroprightCircle /> Learn about Alibaba.com
+          </h3>
+          <h1 className="mb-8 leading-relaxed text-5xl font-semibold">
+            The Leading B2B Ecommerce Platform for<br /> Global Trade
+          </h1>
+        </div>
+      </div>
+    </section>
 
       {/* // Card Section */}
       <section class="text-gray-600 body-font">
@@ -185,9 +205,8 @@ function App() {
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                   </svg>
                 </div>
-                <div class="mt-12  text-center">
-                  <h3 class="tracking-widest text-[#D4A56A] text-xs font-medium title-font mb-2">BUSINESS NETWORK</h3>
-                  <h2 class="text-2xl text-white font-extrabold title-font mb-3">Global Suppliers</h2>
+                <div class="mt-12  text-start">
+                  <h2 class="text-2xl text-white font-extrabold title-font mb-3">Millions of Business Offering</h2>
                   <p class="leading-relaxed text-base text-[#E0D3C5]">Connect with millions of verified suppliers worldwide. Connect with millions of verified suppliers worldwide.</p>
                 </div>
               </div>
@@ -200,8 +219,7 @@ function App() {
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                 </div>
-                <div class="mt-12  text-center">
-                  <h3 class="tracking-widest text-[#D4A56A] text-xs font-medium title-font mb-2">WORLDWIDE REACH</h3>
+                <div class="mt-12  text-start">
                   <h2 class="text-2xl text-white font-extrabold title-font mb-3">Market Expansion</h2>
                   <p class="leading-relaxed text-base text-[#E0D3C5]">Explore new markets and business opportunities globally. Connect with millions of verified suppliers worldwide.</p>
                 </div>
@@ -215,8 +233,7 @@ function App() {
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                   </svg>
                 </div>
-                <div class="mt-12  text-center">
-                  <h3 class="tracking-widest text-[#D4A56A] text-xs font-medium title-font mb-2">ADVANCED SEARCH</h3>
+                <div class="mt-12  text-start">
                   <h2 class="text-2xl text-white font-extrabold title-font mb-3">Product Discovery</h2>
                   <p class="leading-relaxed text-base text-[#E0D3C5]">Find exactly what you need with our powerful search tools. Connect with millions of verified suppliers worldwide.</p>
                 </div>
@@ -230,8 +247,7 @@ function App() {
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                   </svg>
                 </div>
-                <div class="mt-12  text-center">
-                  <h3 class="tracking-widest text-[#D4A56A] text-xs font-medium title-font mb-2">ANALYTICS</h3>
+                <div class="mt-12  text-start">
                   <h2 class="text-2xl text-white font-extrabold title-font mb-3">Business Insights</h2>
                   <p class="leading-relaxed text-base text-[#E0D3C5]">Make data-driven decisions with comprehensive analytics. Connect with millions of verified suppliers worldwide.</p>
                 </div>
@@ -243,17 +259,17 @@ function App() {
       
       {/* // testemonlias section */}
       <section className="text-gray-600 body-font relative">
-        <div className="container mx-auto px-12 py-24 flex justify-center">
+        <div className="container mx-auto px-5 py-24 flex justify-center">
           {/* Testimonial Container */}
-          <div className="w-full lg:w-3/4 xl:w-2.9/3 flex flex-wrap items-center bg-gray-50 rounded-lg shadow-lg py-12 px-32 relative overflow-hidden">
+          <div className="w-full lg:w-5/6 xl:w-3/4 flex flex-row items-center bg-gray-50 rounded-lg shadow-lg py-12 px-8 relative overflow-hidden">
             {/* Left Arrow */}
             <button
               onClick={prevSlide}
-              className="absolute left-8 top-1/2 transform -translate-y-1/2 rounded-full p-4 hover:bg-gray-200 transition-colors z-10"
+              className="flex items-center justify-center pr-3 lg:pr-4 hover:bg-gray-200 transition-colors rounded-full"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-10 text-gray-600"
+                className="h-6 w-6 lg:h-8 lg:w-8 text-gray-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -265,28 +281,33 @@ function App() {
             {/* Testimonial Slide */}
             <div
               key={testimonials[currentSlide].id}
-              className="w-full transition-opacity duration-500 ease-in-out"
+              className="w-full min-h-55 transition-opacity duration-500 ease-in-out"
             >
-              <div className="flex flex-wrap items-center">
+              <div className="flex flex-col lg:flex-row items-center justify-around">
                 {/* Image */}
-                <div className="lg:w-1/3 w-60 h-60 flex justify-center lg:justify-start">
+                <div className="w-42 h-42 lg:w-48 lg:h-48 flex justify-center">
                   <img
-                    className="object-cover w-60 h-60 object-center rounded-full border-4 border-[#D4A56A]"
+                    className="object-cover w-42 h-42 lg:w-48 lg:h-48 object-center rounded-full border-4 border-[#D4A56A]"
                     src={testimonials[currentSlide].image}
                     alt={testimonials[currentSlide].name}
                   />
                 </div>
 
-                {/* Content */}
-                <div className="lg:w-2/3 w-full mt-6 lg:mt-0 lg:pl-16">
-                  <div className="w-full">
-                    <h1 className="title-font font-bold text-3xl lg:text-4xl mb-6 text-gray-900">
-                      {testimonials[currentSlide].name}
-                    </h1>
-                    <p className="leading-relaxed text-gray-600 text-xl">
-                      {testimonials[currentSlide].description}
-                    </p>
-                  </div>
+                {/* Name (Centered Between Image and Description) */}
+                <div className="lg:w-1/4 flex flex-col justify-center lg:justify-start lg:pl-8">
+                  <h1 className="title-font font-bold text-xl lg:text-2xl text-gray-900 text-left lg:text-left">
+                    {testimonials[currentSlide].name}
+                  </h1>
+                  <h1 className="title-font font-bold text-base lg:text-sm text-gray-400 text-left lg:text-left">
+                    {testimonials[currentSlide].name2}
+                  </h1>
+                </div>
+
+                {/* Description (Right-Aligned) */}
+                <div className="lg:w-2/4 w-full mt-6 lg:mt-0 lg:pl-8">
+                  <p className="leading-relaxed text-black text-lg font-semibold lg:text-xl text-left lg:text-left">
+                    {testimonials[currentSlide].description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -294,11 +315,11 @@ function App() {
             {/* Right Arrow */}
             <button
               onClick={nextSlide}
-              className="absolute right-8 top-1/2 transform -translate-y-1/2 rounded-full p-4 hover:bg-gray-200 transition-colors z-10"
+              className="flex items-center justify-center pl-3 lg:pl-4 hover:bg-gray-200 transition-colors rounded-full"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-10 text-gray-600"
+                className="h-6 w-6 lg:h-8 lg:w-8 text-gray-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
