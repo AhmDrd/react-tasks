@@ -92,7 +92,7 @@ const Navbar = () => {
 
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:ml-auto items-center text-white text-sm md:text-base w-md gap-3">
+          <nav className="hidden md:flex md:ml-auto items-center justify-end text-white text-sm md:text-base w-md gap-3">
             <a className={`mr-4 md:mr-6 hover:opacity-75 flex flex-col text-xs ${scrolled ? 'text-black' : 'text-white'}`}>
               <h6>Delivery to:</h6>
               <h5 className="flex items-center gap-1">
@@ -115,7 +115,7 @@ const Navbar = () => {
           </nav>
 
           {/* Sign Up Button */}
-          <button className={`"hidden md:inline-flex items-center lg:mr-20 bg-orange-500 border-0 py-2 px-4 md:px-5 rounded-full text-sm hover:bg-gray-600" ${scrolled ? 'text-white' : 'text-white'}`}>
+          <button className={`"hidden md:inline-flex items-center lg:mr-20 bg-orange-500 border-0 py-2 px-4 md:px-7 rounded-full text-sm hover:bg-gray-600" ${scrolled ? 'text-white' : 'text-white'}`}>
             Sign Up
           </button>
 
@@ -162,7 +162,7 @@ const Navbar = () => {
               <a className="hover:text-gray-300">Buyer Central</a>
               <a className="hover:text-gray-300">Help Center</a>
               <a className="hover:text-gray-300">Get the App</a>
-              <a className="hover:text-gray-300">Become a Supplier</a>
+              <a className="hover:text-gray-300 mr-18">Become a Supplier</a>
             </nav>
           </div>
         </div>
