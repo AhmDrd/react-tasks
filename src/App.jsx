@@ -1,4 +1,4 @@
-import React,{useState}from 'react';
+import React,{useState,useEffect}from 'react';
 import './App.css'
 import chkout from './assets/chkout.jpg'
 import ckt1 from './assets/ckt1.webp'
@@ -13,12 +13,33 @@ import { PiCubeThin } from "react-icons/pi";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FaChevronLeft, FaChevronRight, FaHeart, FaSearchPlus } from "react-icons/fa";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineCamera } from "react-icons/ai";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       {/* First Navbar */}
-      <header className="text-gray-600 body-font absolute top-0 left-0 w-full z-20 bg-black">
+      <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          scrolled ? "bg-white text-black shadow-md" : "bg-black text-white"
+        }`}>
         <div className="flex flex-wrap px-6 md:px-12 py-4 items-center justify-between">
           {/* Logo and Brand Name */}
           <a className="flex title-font font-medium items-center text-white">
@@ -27,7 +48,7 @@ const Navbar = () => {
               className="h-8 w-8 md:h-10 md:w-10"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke={scrolled ? 'oklch(0.705 0.213 47.604)' : '#fff'}
             >
               <path
                 strokeLinecap="round"
@@ -36,14 +57,43 @@ const Navbar = () => {
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
-            <h1 className="sm:text-2xl text-lg ml-2 md:ml-4 font-medium text-white">
-              Aliexpress.com
+            <h1 className={`sm:text-2xl text-lg ml-2 md:ml-4 font-medium ${scrolled ? 'text-orange-500' : 'text-white'}`}>
+              Alibaba.com
             </h1>
           </a>
 
+          <div
+              className={`hidden md:flex fixed top-3 left-2/5 transform -translate-x-1/2 w-[500px] bg-white border border-gray-300 rounded-full shadow-md items-center px-2 py-1 transition-all ${
+                scrolled ? "opacity-100 visible" : "opacity-0 invisible"
+              }`}
+            >
+              {/* Dropdown Button */}
+              <button className="flex items-center px-3 text-gray-700 border-r border-gray-300">
+                Products ▼
+              </button>
+
+              {/* Search Input */}
+              <input
+                type="text"
+                placeholder="March Expo"
+                className="flex-1 px-3 py-2 focus:outline-none text-gray-700"
+              />
+
+              {/* Camera Icon */}
+              <button className="p-2">
+                <AiOutlineCamera className="text-gray-700 text-lg" />
+              </button>
+
+              {/* Search Button */}
+              <button className="bg-orange-500 text-white px-4 py-2 rounded-full flex items-center">
+                <AiOutlineSearch className="mr-1" /> Search
+              </button>
+            </div>
+
+
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:ml-auto items-center text-white text-sm md:text-base">
-            <a className="mr-4 md:mr-6 hover:text-gray-300 flex flex-col text-xs">
+          <nav className="hidden md:flex md:ml-auto items-center text-white text-sm md:text-base w-md gap-3">
+            <a className={`mr-4 md:mr-6 hover:opacity-75 flex flex-col text-xs ${scrolled ? 'text-black' : 'text-white'}`}>
               <h6>Delivery to:</h6>
               <h5 className="flex items-center gap-1">
                 <LiaFlagUsaSolid />
@@ -51,27 +101,27 @@ const Navbar = () => {
               </h5>
             </a>
 
-            <a className="mr-4 md:mr-6 hover:text-gray-300 flex items-center">
+            <a className={`mr-4 md:mr-6 hover:opacity-75 flex items-center ${scrolled ? 'text-black' : 'text-white'}`}>
               🌍 English-USD
             </a>
 
-            <a className="mr-4 md:mr-6 hover:text-gray-300 flex items-center">
+            <a className={`mr-4 md:mr-6 hover:opacity-75 flex items-center ${scrolled ? 'text-black' : 'text-white'}`}>
               🛒
             </a>
 
-            <a className="mr-4 md:mr-6 hover:text-gray-300 flex items-center">
+            <a className={`mr-4 md:mr-6 hover:opacity-75 flex items-center ${scrolled ? 'text-black' : 'text-white'}`}>
               👤 Sign In
             </a>
           </nav>
 
           {/* Sign Up Button */}
-          <button className="hidden md:inline-flex items-center bg-orange-500 border-0 py-2 px-4 md:px-5 rounded-full text-sm text-white hover:bg-gray-600">
+          <button className={`"hidden md:inline-flex items-center lg:mr-20 bg-orange-500 border-0 py-2 px-4 md:px-5 rounded-full text-sm hover:bg-gray-600" ${scrolled ? 'text-white' : 'text-white'}`}>
             Sign Up
           </button>
 
           {/* Mobile Burger Menu */}
           <button
-            className="md:hidden text-white text-2xl"
+            className={`md:hidden text-2xl ${scrolled ? 'text-black' : 'text-white'}`}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
@@ -95,26 +145,28 @@ const Navbar = () => {
       </header>
 
       {/* Second Navbar (Hidden on Small Screens) */}
-      <div className="hidden md:block absolute top-16 left-0 w-full z-20 backdrop-blur-sm bg-black/80">
-        <div className="flex flex-wrap px-6 md:px-12 py-2 items-center justify-between">
-          {/* Left Side Links */}
-          <nav className="flex items-center text-white text-sm md:text-base space-x-4 md:space-x-6">
-            <a className="hover:text-gray-300 flex items-center">
-              <AiOutlineMenu /> All Categories
-            </a>
-            <a className="hover:text-gray-300">Feature Selections</a>
-            <a className="hover:text-gray-300">Trade Assurance</a>
-          </nav>
+      {!scrolled && (
+        <div className="hidden md:block fixed top-16 left-0 w-full z-40 backdrop-blur-sm bg-black/80 transition-opacity duration-300">
+          <div className="flex flex-wrap px-6 md:px-12 py-2 items-center justify-between">
+            {/* Left Side Links */}
+            <nav className="flex items-center text-white text-sm md:text-base space-x-4 md:space-x-6">
+              <a className="hover:text-gray-300 flex items-center">
+                <AiOutlineMenu /> All Categories
+              </a>
+              <a className="hover:text-gray-300">Feature Selections</a>
+              <a className="hover:text-gray-300">Trade Assurance</a>
+            </nav>
 
-          {/* Right Side Links */}
-          <nav className="flex items-center text-white text-sm md:text-base space-x-4 md:space-x-6">
-            <a className="hover:text-gray-300">Buyer Central</a>
-            <a className="hover:text-gray-300">Help Center</a>
-            <a className="hover:text-gray-300">Get the App</a>
-            <a className="hover:text-gray-300">Become a Supplier</a>
-          </nav>
+            {/* Right Side Links */}
+            <nav className="flex items-center text-white text-sm md:text-base space-x-4 md:space-x-6">
+              <a className="hover:text-gray-300">Buyer Central</a>
+              <a className="hover:text-gray-300">Help Center</a>
+              <a className="hover:text-gray-300">Get the App</a>
+              <a className="hover:text-gray-300">Become a Supplier</a>
+            </nav>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
